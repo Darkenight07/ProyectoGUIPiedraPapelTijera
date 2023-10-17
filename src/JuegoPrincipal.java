@@ -107,7 +107,7 @@ public class JuegoPrincipal {
                         }
                     }
                 } else {
-                    System.out.println("No has introducido ningun valor o no es valido y dar en el boton de enviar");
+                    System.out.println("No has introducido ningun valor o no es valido");
                 }
             }
         });
@@ -116,7 +116,7 @@ public class JuegoPrincipal {
         botonComoSeJuega.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(frame, "Para jugar debes introducir en la caja de texto: piedra, papel o tijera");
+                JOptionPane.showMessageDialog(frame, "Para jugar debes introducir en la caja de texto: piedra, papel o tijera y dar en el boton de enviar");
             }
         });
 
