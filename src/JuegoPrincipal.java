@@ -51,7 +51,7 @@ public class JuegoPrincipal {
         boton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String opcionElegidaUsuario = cajaTexto.getText();
+                String opcionElegidaUsuario = cajaTexto.getText().toLowerCase();
 
                 if (opcionElegidaUsuario.equals("piedra") || opcionElegidaUsuario.equals("papel") || opcionElegidaUsuario.equals("tijera")) {
                     if (opcionElegidaUsuario.equals(anterior)) {
