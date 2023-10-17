@@ -59,6 +59,7 @@ public class JuegoPrincipal {
                 } else {
                     System.out.println("Perdiste");
                 }
+
             }
         });
 
