@@ -41,6 +41,12 @@ public class JuegoPrincipal {
         boton.setBounds(150, 300, 80, 30);
         frame.add(boton);
 
+        // Boton de como se juega
+        JButton botonComoSeJuega = new JButton("¿Como se juega?");
+        botonComoSeJuega.setBounds(10, 15, 120, 30);
+        botonComoSeJuega.setSize(137,30);
+        frame.add(botonComoSeJuega);
+
         // Accion del boton
         boton.addActionListener(new ActionListener() {
             @Override
@@ -101,10 +107,19 @@ public class JuegoPrincipal {
                         }
                     }
                 } else {
-                    System.out.println("No has introducido ningun valor o no es valido");
+                    System.out.println("No has introducido ningun valor o no es valido y dar en el boton de enviar");
                 }
             }
         });
+
+        // Accion del boton de como se juega
+        botonComoSeJuega.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(frame, "Para jugar debes introducir en la caja de texto: piedra, papel o tijera");
+            }
+        });
+
         frame.setVisible(true);
 
     }
