@@ -44,6 +44,7 @@ public class JuegoPrincipal {
                     opcionComputadora = "papel";
                 } else if (opcionElegidaComputadora == 2) {
                     opcionComputadora = "tijera";
+
                 }
 
                 System.out.println(opcionComputadora + " " + opcionElegidaUsuario);
