@@ -26,8 +26,12 @@ public class JuegoPrincipal {
 
 
         boolean completado = false;
+        int rondas = 0;
+        int puntosUsuario = 0;
+        int puntosComputadora = 0;
+        String anterior = null;
 
-        while (true) {
+        while (!completado) {
 
             if (cajaTexto.getText().equals("papel") || cajaTexto.getText().equals("piedra") || cajaTexto.getText().equals("tijera")) {
 
@@ -35,7 +39,6 @@ public class JuegoPrincipal {
                 Random random = new Random();
                 int opcionElegidaComputadora = random.nextInt(3);
                 String opcionComputadora = null;
-                String anterior = null;
 
                 if (opcionElegidaComputadora == 0 ) {
                     opcionComputadora = "piedra";
@@ -46,13 +49,8 @@ public class JuegoPrincipal {
                 }
 
 
-                int rondas = 0;
-                int puntosUsuario = 0;
-                int puntosComputadora = 0;
-
-
                 if (opcionElegidaUsuario.equals(anterior)) {
-                    System.out.println("No puedes repetir la misma opcion");
+                    System.out.println("No puedes repetir la misma opcion" + anterior);
                 } else {
                     if (rondas == 5) {
                         System.out.println("Fin del juego, han pasado 5 rondas");
@@ -91,14 +89,15 @@ public class JuegoPrincipal {
                         }
 
                     }
+                    anterior = cajaTexto.getText();
                 }
                 rondas = rondas + 1;
             } else {
                 System.out.println("No has introducido ningun valor o no es valido");
             }
-            String anterior = cajaTexto.getText();
             frame.setVisible(true);
-
         }
+
+
     }
 }
