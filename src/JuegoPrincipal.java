@@ -24,21 +24,18 @@ public class JuegoPrincipal {
         cajaTexto.setBounds(120, 250, 130, 20);
         frame.add(cajaTexto);
 
-        // Boton
-        JButton boton = new JButton("Ingresar");
-        boton.setBounds(120, 280, 130, 20);
-        frame.add(boton);
 
-        // Evento del boton
-        boton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
+        boolean completado = false;
 
+        while (true) {
+
+            if (cajaTexto.getText().equals("papel") || cajaTexto.getText().equals("piedra") || cajaTexto.getText().equals("tijera")) {
 
                 String opcionElegidaUsuario = cajaTexto.getText();
                 Random random = new Random();
                 int opcionElegidaComputadora = random.nextInt(3);
                 String opcionComputadora = null;
-
+                String anterior = null;
 
                 if (opcionElegidaComputadora == 0 ) {
                     opcionComputadora = "piedra";
@@ -48,49 +45,60 @@ public class JuegoPrincipal {
                     opcionComputadora = "tijera";
                 }
 
+
                 int rondas = 0;
                 int puntosUsuario = 0;
                 int puntosComputadora = 0;
 
-                if (rondas == 5) {
-                    System.out.println("Fin del juego, han pasado 5 rondas");
 
-                    if (puntosUsuario > puntosComputadora) {
-                        System.out.println("El usuario gano");
-                    } else if (puntosComputadora > puntosComputadora) {
-                        System.out.println("La computadora gano");
-                    } else if (puntosUsuario == puntosComputadora) {
-                        System.out.println("Empate");
+                if (opcionElegidaUsuario.equals(anterior)) {
+                    System.out.println("No puedes repetir la misma opcion");
+                } else {
+                    if (rondas == 5) {
+                        System.out.println("Fin del juego, han pasado 5 rondas");
+
+                        if (puntosUsuario > puntosComputadora) {
+                            System.out.println("El usuario gano");
+                            completado = true;
+                        } else if (puntosComputadora > puntosComputadora) {
+                            System.out.println("La computadora gano");
+                            completado = true;
+                        } else if (puntosUsuario == puntosComputadora) {
+                            System.out.println("Empate");
+                            completado = true;
+                        }
+
+
+                    } else if (rondas < 5) {
+                        System.out.println("Siguiente ronda");
+
+                        System.out.println(opcionElegidaUsuario + " " + opcionComputadora);
+
+                        if (opcionElegidaUsuario.equals(opcionComputadora) ) {
+                            System.out.println("Empate");
+                        } else if (opcionElegidaUsuario.equals("papel") && opcionComputadora.equals("piedra") ) {
+                            System.out.println("Ganaste");
+                            puntosUsuario = puntosUsuario + 1;
+                        } else if (opcionElegidaUsuario.equals("piedra") && opcionComputadora.equals("tijera") ) {
+                            System.out.println("Ganaste");
+                            puntosUsuario = puntosUsuario + 1;
+                        } else if (opcionElegidaUsuario.equals("tijera") && opcionComputadora.equals("papel") ) {
+                            System.out.println("Ganaste");
+                            puntosUsuario = puntosUsuario + 1;
+                        } else {
+                            System.out.println("Perdiste");
+                            puntosComputadora = puntosComputadora + 1;
+                        }
+
                     }
-
-
-                } else if (rondas < 5) {
-                    System.out.println("Siguiente ronda");
-
-                    System.out.println(opcionElegidaUsuario + " " + opcionComputadora);
-
-                    if (opcionElegidaUsuario.equals(opcionComputadora) ) {
-                        System.out.println("Empate");
-                    } else if (opcionElegidaUsuario.equals("papel") && opcionComputadora.equals("piedra") ) {
-                        System.out.println("Ganaste");
-                        puntosUsuario = puntosUsuario + 1;
-                    } else if (opcionElegidaUsuario.equals("piedra") && opcionComputadora.equals("tijera") ) {
-                        System.out.println("Ganaste");
-                        puntosUsuario = puntosUsuario + 1;
-                    } else if (opcionElegidaUsuario.equals("tijera") && opcionComputadora.equals("papel") ) {
-                        System.out.println("Ganaste");
-                        puntosUsuario = puntosUsuario + 1;
-                    } else {
-                        System.out.println("Perdiste");
-                        puntosComputadora = puntosComputadora + 1;
-                    }
-
                 }
                 rondas = rondas + 1;
-
+            } else {
+                System.out.println("No has introducido ningun valor o no es valido");
             }
-        });
+            String anterior = cajaTexto.getText();
+            frame.setVisible(true);
 
-        frame.setVisible(true);
+        }
     }
 }
