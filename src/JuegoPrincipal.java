@@ -28,6 +28,11 @@ public class JuegoPrincipal {
         textoPrincipal.setFont(new Font("Arial", Font.PLAIN, 20));
         frame.add(textoPrincipal);
 
+        // Texto de resultado del ganador
+        JLabel textoResultado = new JLabel();
+        textoResultado.setBounds(160, 150, 100, 100);
+        frame.add(textoResultado);
+
         // Caja de texto
         cajaTexto.setBounds(120, 250, 130, 20);
         frame.add(cajaTexto);
@@ -44,7 +49,7 @@ public class JuegoPrincipal {
 
                 if (opcionElegidaUsuario.equals("piedra") || opcionElegidaUsuario.equals("papel") || opcionElegidaUsuario.equals("tijera")) {
                     if (opcionElegidaUsuario.equals(anterior)) {
-                        System.out.println("Has repetido la misma opcion en la anterior ronda " + anterior);
+                        JOptionPane.showMessageDialog(frame, "Has repetido la misma opcion en la anterior ronda, " + "antes elegiste " + anterior);
                     } else {
                         Random random = new Random();
                         int opcionElegidaComputadora = random.nextInt(3);
@@ -62,28 +67,33 @@ public class JuegoPrincipal {
                             System.out.println("Fin del juego, han pasado 5 rondas");
 
                             if (puntosUsuario > puntosComputadora) {
-                                System.out.println("El usuario gano " + "con " + puntosUsuario + " puntos");
+                                JOptionPane.showMessageDialog(frame, "El usuario gano " + "con " + puntosUsuario + " puntos");
                             } else if (puntosComputadora > puntosUsuario) {
-                                System.out.println("La computadora gano " + "con " + puntosComputadora + " puntos");
+                                JOptionPane.showMessageDialog(frame, "La computadora gano " + "con " + puntosComputadora + " puntos");
                             } else if (puntosUsuario == puntosComputadora) {
-                                System.out.println("Empate " + "con " + puntosUsuario + " punntos el usuario y " + puntosComputadora + " puntos la computadora");
+                                JOptionPane.showMessageDialog(frame, "Empate " + "con " + puntosUsuario + " puntos el usuario y " + puntosComputadora + " puntos la computadora");
                             }
                         } else {
                             System.out.println("Siguiente ronda");
 
                             if (opcionElegidaUsuario.equals(opcionComputadora) ) {
                                 System.out.println("Empate");
+                                textoResultado.setText("Empate");
                             } else if (opcionElegidaUsuario.equals("papel") && opcionComputadora.equals("piedra") ) {
                                 System.out.println("Ganaste");
+                                textoResultado.setText("Ganaste");
                                 puntosUsuario = puntosUsuario + 1;
                             } else if (opcionElegidaUsuario.equals("piedra") && opcionComputadora.equals("tijera") ) {
                                 System.out.println("Ganaste");
+                                textoResultado.setText("Ganaste");
                                 puntosUsuario = puntosUsuario + 1;
                             } else if (opcionElegidaUsuario.equals("tijera") && opcionComputadora.equals("papel") ) {
                                 System.out.println("Ganaste");
+                                textoResultado.setText("Ganaste");
                                 puntosUsuario = puntosUsuario + 1;
                             } else {
                                 System.out.println("Perdiste");
+                                textoResultado.setText("Perdiste");
                                 puntosComputadora = puntosComputadora + 1;
                             }
                             rondas++;
