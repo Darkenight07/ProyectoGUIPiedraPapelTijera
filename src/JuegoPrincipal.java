@@ -7,8 +7,6 @@ public class JuegoPrincipal {
     private static int rondas = 0;
     private static int puntosUsuario = 0;
     private static int puntosComputadora = 0;
-    private static String anterior = null;
-
     public static void main(String[] args) {
         // Elementos importantes de la ventana
         JFrame frame = new JFrame("Juego Piedra, papel y tijera");
