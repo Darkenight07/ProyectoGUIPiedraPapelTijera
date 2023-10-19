@@ -10,13 +10,20 @@ public class JuegoPrincipal {
     private static String anterior = null;
 
     public static void main(String[] args) {
-        // Elementos importantes
-        JFrame frame = new JFrame("Juego");
+        // Elementos importantes de la ventana
+        JFrame frame = new JFrame("Juego Piedra, papel y tijera");
         JTextField cajaTexto = new JTextField();
-        JButton boton = new JButton("Enviar");
+
+        // Textos
         JLabel textoPrincipal = new JLabel("Juego Piedra, papel y tijera");
         JLabel textoResultado = new JLabel();
+        JLabel textoPuntosUsuario = new JLabel("Puntos usuario: " + puntosUsuario);
+        JLabel textoPuntosComputadora = new JLabel("Puntos computadora: " + puntosComputadora);
+
+        // Botones
+        JButton botonEnviar = new JButton("Enviar");
         JButton botonComoSeJuega = new JButton("¿Como se juega?");
+        JButton botonReiniciar = new JButton("Reiniciar");
 
         // Ventana
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -31,7 +38,6 @@ public class JuegoPrincipal {
         frame.add(textoPrincipal);
 
         // Texto de resultado del ganador
-
         textoResultado.setBounds(160, 150, 100, 100);
         frame.add(textoResultado);
 
@@ -40,27 +46,28 @@ public class JuegoPrincipal {
         frame.add(cajaTexto);
 
         // Boton
-        boton.setBounds(150, 300, 80, 30);
-        frame.add(boton);
+        botonEnviar.setBounds(150, 300, 80, 30);
+        frame.add(botonEnviar);
 
         // Boton de como se juega
-
         botonComoSeJuega.setBounds(10, 15, 120, 30);
         botonComoSeJuega.setSize(137,30);
         frame.add(botonComoSeJuega);
 
         // Texto contador puntos usuario
-        JLabel textoPuntosUsuario = new JLabel("Puntos usuario: " + puntosUsuario);
         textoPuntosUsuario.setBounds(10, 50, 100, 100);
         frame.add(textoPuntosUsuario);
 
         // Texto contador puntos computadora
-        JLabel textoPuntosComputadora = new JLabel("Puntos computadora: " + puntosComputadora);
         textoPuntosComputadora.setBounds(10, 70, 135, 100);
         frame.add(textoPuntosComputadora);
 
+        // Boton para reiniciar juego
+        botonReiniciar.setBounds(287, 15, 90, 30);
+        frame.add(botonReiniciar);
+
         // Accion del boton
-        boton.addActionListener(new ActionListener() {
+        botonEnviar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String opcionElegidaUsuario = cajaTexto.getText().toLowerCase();
@@ -127,8 +134,6 @@ public class JuegoPrincipal {
                 textoPuntosComputadora.setText("Puntos computadora: " + puntosComputadora);
             }
         });
-
-
         // Accion del boton de como se juega
         botonComoSeJuega.addActionListener(new ActionListener() {
             @Override
@@ -137,7 +142,18 @@ public class JuegoPrincipal {
             }
         });
 
+        // Cuando se aprieta el boton de "Reiniciar" se reinician los puntos a 0
+        botonReiniciar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                rondas = 0;
+                puntosUsuario = 0;
+                puntosComputadora = 0;
+                textoPuntosUsuario.setText("Puntos usuario: " + puntosUsuario);
+                textoPuntosComputadora.setText("Puntos computadora: " + puntosComputadora);
+                System.out.println("Se reiniciaron los puntos a 0");
+            }
+        });
         frame.setVisible(true);
-
     }
 }
